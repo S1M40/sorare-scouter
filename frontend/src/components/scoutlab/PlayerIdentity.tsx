@@ -40,11 +40,15 @@ export function PlayerIdentity({
     <div className="flex items-center gap-2.5">
       <div
         className={cn(
-          "grid shrink-0 place-items-center rounded-md border border-border bg-elevated font-semibold text-muted-foreground",
+          "grid shrink-0 place-items-center overflow-hidden rounded-md border border-border bg-elevated font-semibold text-muted-foreground",
           size === "sm" ? "size-7 text-[11px]" : "size-10 text-sm",
         )}
       >
-        {initials(player.name)}
+        {player.photoUrl ? (
+          <img src={player.photoUrl} alt={player.name} className="h-full w-full object-cover" />
+        ) : (
+          initials(player.name)
+        )}
       </div>
       <div className="min-w-0">
         <div className="truncate text-sm leading-tight font-medium text-foreground">
